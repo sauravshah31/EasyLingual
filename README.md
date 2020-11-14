@@ -8,6 +8,8 @@
 * Provides speech therapy in the form of visual, auditory and interative activities
 * Also a platform for parents, volunteers, language experts and therapist to help in improving our system (AI)
 
+<br><br>
+
 ### Idea
 <hr>
 
@@ -26,8 +28,11 @@ The volunteers can help in improving the system by recording themselves pronounc
  This will help the system to support multiple languages and provide better feedback to the children.
 </p>
 
+<br><br>
 
 ### Tech Stack
+<hr>
+
 * Frontend
   * React Js
   * Material UI/ Bootstrap
