@@ -1,0 +1,93 @@
+<html>
+<head>
+    <style>
+        #main{
+            display: table;
+            width: 100%;
+        }
+        .lg,#play{
+            position: relative;
+            width: 440px;
+            top: 0px;
+            box-sizing: border-box;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .lg img {
+            display: inline-block;
+            width: 440px;
+        }
+        .hidden{
+            display: none;
+        }
+        #play img:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+<div id="main">
+    <div id="play" >
+        <img src="play-button.svg"/>
+    </div>
+    <div id="start" class="lg">
+        <img src="start.svg"/>
+    </div>
+    <div id="a" class="lg">
+        <img src="a.svg"/>
+    </div>
+    <div id="p" class="lg">
+        <img src="p.svg"/>
+    </div>
+    <div id="p" class="lg">
+        <img src="p.svg"/>
+    </div>
+    <div id="l" class="lg">
+        <img src="l.svg"/>
+    </div>
+    <div id="e" class="lg">
+        <img src="e.svg"/>
+    </div>
+    <audio>
+        <source src="apple.mp3" type="audio/mp3">
+    </audio>
+</div>
+<script>
+    
+    let svg = document.querySelectorAll('.lg');
+    let audio = document.querySelector('audio');
+    let interval = 486.125/5;
+    let i = 0;
+    for(let i=0 ;i<svg.length;i++)
+        svg[i].classList.add('hidden');
+    i=0;
+    function animate(){
+        setTimeout(()=>{
+            let prev = i-1;
+
+            if(prev<0)
+                prev = svg.length-1;
+            svg[prev].classList.add('hidden');
+            svg[i].classList.remove('hidden');
+            if(i==1){
+                audio.play();
+            }
+            i = (i+1)%svg.length;
+            animate();
+        },interval);
+    }
+    let play = document.getElementById('play');
+
+    function init(){
+        play.classList.add('hidden');
+        play.getElementsByTagName('img')[0].classList.add('hidden');
+        play.removeEventListener("click",init);
+        svg[0].classList.remove('hidden');
+        animate();
+    }
+    document.addEventListener("click",init);
+    
+</script>
+</body>
+</html>
